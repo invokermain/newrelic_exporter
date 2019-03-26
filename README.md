@@ -24,6 +24,7 @@ Deprecated logging package has been updated to currently maintained Prometheus l
 Name               | Description
 -------------------|------------
 config             | Config file path. Defaults to `newrelic_exporter.yml` in current directory.
+log.level	   | specify logging level, useful for debugging.
 
 ## Available Configuration Values
 
