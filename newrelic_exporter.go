@@ -5,6 +5,7 @@ import (
 	"github.com/invokermain/newrelic_exporter/exporter"
 	"github.com/invokermain/newrelic_exporter/newrelic"
 	"github.com/prometheus/client_golang/prometheus"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/prometheus/common/log"
 	"github.com/prometheus/common/version"
 	"net/http"
@@ -30,7 +31,7 @@ func main() {
 
 	prometheus.MustRegister(exp)
 
-	http.Handle(cfg.MetricPath, prometheus.Handler())
+	http.Handle(cfg.MetricPath, promhttp.Handler())
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte(`<html>
 <head><title>NewRelic exporter</title></head>
